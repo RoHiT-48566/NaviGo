@@ -14,7 +14,7 @@ const CaptainHome = () => {
           to="/home"
           className="h-10 w-10 bg-white flex items-center justify-center rounded-full"
         >
-          <i clasNames="text-lg font-medium ri-logout-box-r-line"></i>
+          <i className="text-lg font-medium ri-logout-box-r-line"></i>
         </Link>
       </div>
       <div className="h-1/2">

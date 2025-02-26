@@ -5,7 +5,7 @@ import gsap from "gsap";
 import "remixicon/fonts/remixicon.css";
 import LocationSearchPanel from "../components/LocationSearchPanel";
 import VehiclePanel from "../components/VehiclePanel";
-import ConfirmRide from "../components/confirmRide";
+import ConfirmRide from "../components/ConfirmRide";
 import WaitingForDriver from "../components/WaitingForDriver";
 import LookingForDriver from "../components/LookingForDriver";
 import axios from "axios";
@@ -161,6 +161,7 @@ const Home = () => {
   async function findTrip() {
     setVehiclePanel(true);
     setPanelOpen(false);
+
     const response = await axios.get(
       `${import.meta.env.VITE_BASE_URL}/rides/get-fare`,
       {
@@ -170,6 +171,7 @@ const Home = () => {
         },
       }
     );
+    console.log(response.data);
     setFare(response.data);
   }
 
@@ -187,6 +189,7 @@ const Home = () => {
         },
       }
     );
+    console.log(response.data);
   }
 
   return (
@@ -288,7 +291,7 @@ const Home = () => {
           pickup={pickup}
           destination={destination}
           fare={fare}
-          vehicleType={setVehicleType}
+          vehicleType={vehicleType}
           setConfirmRidePanel={setConfirmRidePanel}
           setVehicleFound={setVehicleFound}
         />
@@ -298,7 +301,7 @@ const Home = () => {
         className="fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-6 pt-12"
       >
         <LookingForDriver
-          createRide={createRide}
+          // createRide={createRide}
           pickup={pickup}
           destination={destination}
           fare={fare}

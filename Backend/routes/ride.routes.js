@@ -10,15 +10,15 @@ router.post(
   body("pickup")
     .isString()
     .isLength({ min: 3 })
-    .withMessage("Invalid Pickup Location"),
+    .withMessage("Invalid pickup address"),
   body("destination")
     .isString()
     .isLength({ min: 3 })
-    .withMessage("Invalid Drop Location"),
+    .withMessage("Invalid destination address"),
   body("vehicleType")
     .isString()
     .isIn(["auto", "car", "motorcycle"])
-    .withMessage("Invalid Vehicle Type"),
+    .withMessage("Invalid vehicle type"),
   rideController.createRide
 );
 

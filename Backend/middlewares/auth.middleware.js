@@ -15,7 +15,7 @@ module.exports.authUser = async (req, res, next) => {
   }
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await userModel.findById(decoded._id);
+    const user = await userModel.findById(decoded.id || decoded._id);
     req.user = user;
     return next();
   } catch (err) {
@@ -34,7 +34,7 @@ module.exports.authCaptain = async (req, res, next) => {
   }
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const captain = await captainModel.findById(decoded._id);
+    const captain = await captainModel.findById(decoded.id || decoded._id);
     req.captain = captain;
     return next();
   } catch (err) {

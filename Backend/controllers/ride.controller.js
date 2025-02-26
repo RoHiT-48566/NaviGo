@@ -3,12 +3,31 @@ const { validationResult } = require("express-validator");
 const mapService = require("../services/maps.service");
 const rideModel = require("../models/ride.model");
 
+// module.exports.createRide = async (req, res) => {
+//   const errors = validationResult(req);
+//   if (!errors.isEmpty()) {
+//     return res.status(400).json({ errors: errors.array() });
+//   }
+//   const { userId, pickup, destination, vehicleType } = req.body;
+//   try {
+//     const ride = await rideService.createRide({
+//       user: req.user._id,
+//       pickup,
+//       destination,
+//       vehicleType,
+//     });
+//     return res.status(201).json(ride);
+//   } catch (err) {
+//     return res.status(500).json({ message: err.message });
+//   }
+// };
+
 module.exports.createRide = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-  const { userId, pickup, destination, vehicleType } = req.body;
+  const { pickup, destination, vehicleType } = req.body;
   try {
     const ride = await rideService.createRide({
       user: req.user._id,
@@ -16,9 +35,9 @@ module.exports.createRide = async (req, res) => {
       destination,
       vehicleType,
     });
-    const pickupCoordinates = await mapService.getAddressCoordinate(pickup);
-    return res.status(201).json(ride);
+    res.status(201).json(ride);
   } catch (err) {
+    console.log(err);
     return res.status(500).json({ message: err.message });
   }
 };

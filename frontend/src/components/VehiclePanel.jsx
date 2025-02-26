@@ -5,7 +5,7 @@ const VehiclePanel = (props) => {
     <div>
       <h5
         onClick={() => {
-          props.setVehiclePanelOpen(false);
+          props.setVehiclePanel(false);
         }}
         className="p-1 text-center w-[93%] absolute top-0"
       >
@@ -15,6 +15,7 @@ const VehiclePanel = (props) => {
       <div
         onClick={() => {
           props.setConfirmRidePanel(true);
+          props.selectVehicle("car");
         }}
         className="flex border-2 border-gray-100 active:border-black mb-2 rounded-xl w-full p-3 items-center justify-between"
       >
@@ -35,11 +36,12 @@ const VehiclePanel = (props) => {
             Affordable, compact rides
           </p>
         </div>
-        <h2 className="text-lg font-semibold">Rs.193.20</h2>
+        <h2 className="text-lg font-semibold">Rs.{props.fare.car}</h2>
       </div>
       <div
         onClick={() => {
           props.setConfirmRidePanel(true);
+          props.selectVehicle("car");
         }}
         className="flex border-2 border-gray-100 active:border-black mb-2 rounded-xl w-full p-3 items-center justify-between"
       >
@@ -60,11 +62,12 @@ const VehiclePanel = (props) => {
             Affordable, compact rides
           </p>
         </div>
-        <h2 className="text-lg font-semibold">Rs.150.20</h2>
+        <h2 className="text-lg font-semibold">Rs.{props.fare.car}</h2>
       </div>
       <div
         onClick={() => {
           props.setConfirmRidePanel(true);
+          props.selectVehicle("motorcycle");
         }}
         className="flex border-2 border-gray-100 active:border-black mb-2 rounded-xl w-full p-3 items-center justify-between"
       >
@@ -85,11 +88,12 @@ const VehiclePanel = (props) => {
             Affordable, motorcycle rides
           </p>
         </div>
-        <h2 className="text-lg font-semibold">Rs.80.90</h2>
+        <h2 className="text-lg font-semibold">Rs.{props.fare.motorcycle}</h2>
       </div>
       <div
         onClick={() => {
           props.setConfirmRidePanel(true);
+          props.selectVehicle("auto");
         }}
         className="flex border-2 border-gray-100 active:border-black mb-2 rounded-xl w-full p-3 items-center justify-between"
       >
@@ -110,7 +114,7 @@ const VehiclePanel = (props) => {
             Affordable, auto rides
           </p>
         </div>
-        <h2 className="text-lg font-semibold">Rs.118.90</h2>
+        <h2 className="text-lg font-semibold">Rs.{props.fare.auto}</h2>
       </div>
     </div>
   );

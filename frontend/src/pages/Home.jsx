@@ -42,11 +42,17 @@ const Home = () => {
   const { socket } = useContext(SocketContext);
   const { user } = useContext(UserDataContext);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     socket.emit("join", { userType: "user", userId: user._id });
   }, [user]);
 
-  const navigate = useNavigate();
+  socket.on("ride-confirmed", (ride) => {
+    setVehicleFound(false);
+    setWaitingForDriver(true);
+    setRide(ride);
+  });
 
   const handPickupChange = async (e) => {
     setPickup(e.target.value);

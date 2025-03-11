@@ -18,7 +18,7 @@ const WaitingForDriver = (props) => {
           alt=""
         />
         <div className="text-right">
-          <h2 className="text-lg font-medium">
+          <h2 className="text-lg font-medium capitalize">
             {props.ride?.captain.fullname.firstname}
           </h2>
           <h4 className="text-xl font-semibold -mt-1 -mb-1">
@@ -51,7 +51,7 @@ const WaitingForDriver = (props) => {
           <div className="flex items-center gap-5 p-3">
             <i className="text-lg ri-cash-line"></i>
             <div>
-              <h3 className="text-lg font-medium">Rs{props.ride?.fare}</h3>
+              <h3 className="text-lg font-medium">Rs.{props.ride?.fare}</h3>
               <p className="text-sm -mt-1 text-gray-600">Cash Cash</p>
             </div>
           </div>

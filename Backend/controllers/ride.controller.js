@@ -4,25 +4,6 @@ const mapService = require("../services/maps.service");
 const rideModel = require("../models/ride.model");
 const { sendMessageToSocketId } = require("../socket");
 
-// module.exports.createRide = async (req, res) => {
-//   const errors = validationResult(req);
-//   if (!errors.isEmpty()) {
-//     return res.status(400).json({ errors: errors.array() });
-//   }
-//   const { userId, pickup, destination, vehicleType } = req.body;
-//   try {
-//     const ride = await rideService.createRide({
-//       user: req.user._id,
-//       pickup,
-//       destination,
-//       vehicleType,
-//     });
-//     return res.status(201).json(ride);
-//   } catch (err) {
-//     return res.status(500).json({ message: err.message });
-//   }
-// };
-
 module.exports.createRide = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -96,6 +77,32 @@ module.exports.confirmRide = async (req, res) => {
     });
     sendMessageToSocketId(ride.user.socketId, {
       event: "ride-confirmed",
+      data: ride,
+    });
+    return res.status(200).json(ride);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ message: err.message });
+  }
+};
+
+module.exports.startRide = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  const { rideId, otp } = req.query;
+  try {
+    const ride = await rideService.startRide({
+      rideId,
+      otp,
+      captain: req.captain,
+    });
+    if (!ride.user || !ride.user.socketId) {
+      throw new Error("Socket ID not found for the user");
+    }
+    sendMessageToSocketId(ride.user.socketId, {
+      event: "ride-started",
       data: ride,
     });
     return res.status(200).json(ride);

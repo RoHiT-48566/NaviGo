@@ -49,9 +49,16 @@ const Home = () => {
   }, [user]);
 
   socket.on("ride-confirmed", (ride) => {
+    console.log(ride);
     setVehicleFound(false);
     setWaitingForDriver(true);
     setRide(ride);
+  });
+
+  socket.on("ride-started", (ride) => {
+    console.log(ride);
+    setWaitingForDriver(false);
+    navigate("/riding", { state: { ride } });
   });
 
   const handPickupChange = async (e) => {

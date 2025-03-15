@@ -1,7 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const FinishRide = (props) => {
+  const navigate = useNavigate();
+
+  async function endRide() {
+    const response = await axios.post(
+      `${import.meta.env.VITE_BASE_URL}/rides/end-ride`,
+      {
+        rideId: props.ride._id,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    if (response.status === 200) {
+      navigate("/captain-home");
+    }
+  }
+
   return (
     <div>
       <h5
@@ -55,12 +76,12 @@ const FinishRide = (props) => {
           </div>
         </div>
         <div className="mt-10 w-full">
-          <Link
-            to="/captain-home"
+          <button
+            onClick={endRide}
             className="w-full mt-5 flex text-lg justify-center bg-green-600 text-white font-semibold p-3 rounded-lg"
           >
             Finish Ride
-          </Link>
+          </button>
           <p className="text-gray-500 text-center mt-2 text-xs">
             Click on finish ride if payment is completed.
           </p>

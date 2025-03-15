@@ -8,6 +8,7 @@ import VehiclePanel from "../components/VehiclePanel";
 import ConfirmRide from "../components/ConfirmRide";
 import WaitingForDriver from "../components/WaitingForDriver";
 import LookingForDriver from "../components/LookingForDriver";
+import LiveTracking from "../components/LiveTracking";
 
 import { SocketContext } from "../context/SocketContext";
 import { UserDataContext } from "../context/userContext";
@@ -225,11 +226,7 @@ const Home = () => {
       />
       <div className="h-screen w-screen">
         {/* Image for temporary use */}
-        <img
-          className="h-full w-full object-cover"
-          src="https://images.squarespace-cdn.com/content/v1/54ff63f0e4b0bafce6932642/1613584928617-VSRY2IR8T60HPREGGI9M/Two+Maps+-+Google+Maps+vs+Uber%27s+Version+of+Google+Maps.png"
-          alt=""
-        />
+        <LiveTracking />
       </div>
       <div className="flex flex-col justify-end h-screen absolute top-0 w-full">
         <div className="h-[30%] p-6 bg-white relative">

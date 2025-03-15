@@ -1,9 +1,22 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useEffect, useContext } from "react";
+import { SocketContext } from "../context/SocketContext";
+import { useNavigate } from "react-router-dom";
+import LiveTracking from "../components/LiveTracking";
 
 const Riding = () => {
   const location = useLocation();
-  const { ride } = location.state;
+  const { ride } = location.state || {};
+
+  const { socket } = useContext(SocketContext);
+
+  const navigate = useNavigate();
+
+  socket.on("ride-ended", () => {
+    navigate("/home");
+  });
+
   return (
     <div className="h-screen">
       <Link
@@ -13,11 +26,7 @@ const Riding = () => {
         <i className="text-lg font-medium ri-home-5-line"></i>
       </Link>
       <div className="h-1/2">
-        <img
-          className="h-full w-full object-cover"
-          src="https://images.squarespace-cdn.com/content/v1/54ff63f0e4b0bafce6932642/1613584928617-VSRY2IR8T60HPREGGI9M/Two+Maps+-+Google+Maps+vs+Uber%27s+Version+of+Google+Maps.png"
-          alt=""
-        />
+        <LiveTracking />
       </div>
       <div className="h-1/2 p-4">
         <div className="flex items-center justify-between">

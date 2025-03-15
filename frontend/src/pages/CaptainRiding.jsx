@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import FinishRide from "../components/FinishRide";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import LiveTracking from "../components/LiveTracking";
 
 const CaptainRiding = () => {
   const [finishRidePanel, setFinishRidePanel] = useState(false);
@@ -27,7 +28,7 @@ const CaptainRiding = () => {
   );
 
   return (
-    <div className="h-screen relative">
+    <div className="h-screen relative flex flex-col justify-end">
       <div className="fixed p-6 top-0 flex items-center justify-between w-screen">
         <img
           className="w-16"
@@ -40,13 +41,6 @@ const CaptainRiding = () => {
         >
           <i className="text-lg font-medium ri-logout-box-r-line"></i>
         </Link>
-      </div>
-      <div className="h-4/5">
-        <img
-          className="h-full w-full object-cover"
-          src="https://images.squarespace-cdn.com/content/v1/54ff63f0e4b0bafce6932642/1613584928617-VSRY2IR8T60HPREGGI9M/Two+Maps+-+Google+Maps+vs+Uber%27s+Version+of+Google+Maps.png"
-          alt=""
-        />
       </div>
 
       <div
@@ -71,6 +65,9 @@ const CaptainRiding = () => {
         className="fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-10 pt-12"
       >
         <FinishRide ride={rideData} setFinishRidePanel={setFinishRidePanel} />
+      </div>
+      <div className="h-screen w-screen fixed top-0 z-[-1]">
+        <LiveTracking />
       </div>
     </div>
   );

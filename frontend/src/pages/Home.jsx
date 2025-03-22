@@ -46,7 +46,12 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    socket.emit("join", { userType: "user", userId: user._id });
+    if (user && user._id) {
+      socket.emit("join", { userType: "user", userId: user._id });
+    } else {
+      console.log("User is not defined");
+    }
+    // socket.emit("join", { userType: "user", userId: user._id });
   }, [user]);
 
   socket.on("ride-confirmed", (ride) => {

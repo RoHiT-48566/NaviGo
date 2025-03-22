@@ -9,21 +9,29 @@ async function getFare(pickup, destination) {
   }
   const distanceTime = await mapService.getDistanceTime(pickup, destination);
   const baseFare = {
+    suv: 50,
     auto: 20,
     car: 30,
     motorcycle: 10,
   };
   const perKmRate = {
+    suv: 20,
     auto: 10,
     car: 15,
     motorcycle: 8,
   };
   const perMinuteRate = {
+    suv: 5,
     auto: 2,
     car: 3,
     motorcycle: 1.5,
   };
   const fare = {
+    suv: Math.round(
+      baseFare.auto +
+        (distanceTime.distance.value / 1000) * perKmRate.suv +
+        (distanceTime.duration.value / 60) * perKmRate.suv
+    ),
     auto: Math.round(
       baseFare.auto +
         (distanceTime.distance.value / 1000) * perKmRate.auto +
@@ -64,12 +72,15 @@ module.exports.createRide = async ({
     throw new Error("All fields are required");
   }
   const fare = await getFare(pickup, destination);
+  const distanceTime = await mapService.getDistanceTime(pickup, destination);
   const ride = rideModel.create({
     user,
     pickup,
     destination,
     otp: getOtp(6),
     fare: fare[vehicleType],
+    distance: distanceTime.distance.value,
+    duration: distanceTime.duration.value,
   });
   return ride;
 };

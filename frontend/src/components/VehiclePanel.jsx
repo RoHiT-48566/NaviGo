@@ -15,7 +15,7 @@ const VehiclePanel = (props) => {
       <div
         onClick={() => {
           props.setConfirmRidePanel(true);
-          props.selectVehicle("car");
+          props.selectVehicle("suv");
         }}
         className="flex border-2 border-gray-100 active:border-black mb-2 rounded-xl w-full p-3 items-center justify-between"
       >
@@ -31,12 +31,12 @@ const VehiclePanel = (props) => {
               <i className="ri-user-3-fill"></i>6
             </span>
           </h4>
-          <h5 className="font-medium text-sm">2 mins away</h5>
+          <h5 className="font-medium text-sm">Few mins away!</h5>
           <p className="font-normal text-xs text-gray-600">
             Affordable, compact rides
           </p>
         </div>
-        <h2 className="text-lg font-semibold">₹{props.fare.car}</h2>
+        <h2 className="text-lg font-semibold">₹{props.fare.suv}</h2>
       </div>
       <div
         onClick={() => {
@@ -57,7 +57,7 @@ const VehiclePanel = (props) => {
               <i className="ri-user-3-fill"></i>4
             </span>
           </h4>
-          <h5 className="font-medium text-sm">2 mins away</h5>
+          <h5 className="font-medium text-sm">Few mins away!</h5>
           <p className="font-normal text-xs text-gray-600">
             Affordable, compact rides
           </p>
@@ -83,7 +83,7 @@ const VehiclePanel = (props) => {
               <i className="ri-user-3-fill"></i>1
             </span>
           </h4>
-          <h5 className="font-medium text-sm">2 mins away</h5>
+          <h5 className="font-medium text-sm">Few mins away!</h5>
           <p className="font-normal text-xs text-gray-600">
             Affordable, motorcycle rides
           </p>
@@ -109,7 +109,7 @@ const VehiclePanel = (props) => {
               <i className="ri-user-3-fill"></i>3
             </span>
           </h4>
-          <h5 className="font-medium text-sm">2 mins away</h5>
+          <h5 className="font-medium text-sm">Few mins away!</h5>
           <p className="font-normal text-xs text-gray-600">
             Affordable, auto rides
           </p>

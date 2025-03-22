@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-The NaviGo Project is a ride-hailing application that allows users to book rides, track drivers in real time, and manage their ride. This project is built using a MERN (MongoDB, Express.js, React.js, Node.js) stack with Google Maps API integration for location-based services.
+The NaviGo Project is a ride-hailing application replicating Uber's core features, that allows users to book rides, track drivers in real time, and manage their ride. This project is built using a MERN (MongoDB, Express.js, React.js, Node.js) stack with Google Maps API integration for location-based services.
 
 ## Features
 

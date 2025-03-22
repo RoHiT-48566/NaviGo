@@ -240,7 +240,7 @@ const Home = () => {
             onClick={(e) => {
               setPanelOpen(false);
             }}
-            className="absolute opacity-0 top-6 right-6 text-2xl"
+            className="absolute opacity-0 right-6 top-6 text-2xl"
           >
             <i className="ri-arrow-down-wide-line"></i>
           </h5>
@@ -251,7 +251,7 @@ const Home = () => {
               submitHandler(e);
             }}
           >
-            <div className="line absolute h-16 w-1 top-[45%] left-10 bg-gray-700 rounded-full"></div>
+            <div className="line absolute h-16 w-1 top-[50%] -translate-y-1/2 left-5 bg-gray-700 rounded-full"></div>
             <input
               value={pickup}
               onChange={handPickupChange}

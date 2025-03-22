@@ -17,7 +17,7 @@ router.post(
     .withMessage("Invalid destination address"),
   body("vehicleType")
     .isString()
-    .isIn(["auto", "car", "motorcycle"])
+    .isIn(["auto", "car", "motorcycle", "suv"])
     .withMessage("Invalid vehicle type"),
   rideController.createRide
 );
